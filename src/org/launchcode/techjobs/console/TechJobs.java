@@ -132,10 +132,4 @@ public class TechJobs {
         }
 
     }
-    // TODO: make searching case-insensitive, BUT return results with cases as they appear in CSV
-    // list of methods called when searching: main; getUserSelection; findByValue; findByColumnAndValue
-    // how is the user's search str compared against the values of fields of HM objects?
-        // ANS: the user's search term is saved as searchTerm in main under else clause
-    // need to make the comparison between user's search and HM objects without case mattering
-        // BUT don't change the data in allJobs
 }

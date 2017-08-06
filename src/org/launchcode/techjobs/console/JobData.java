@@ -76,7 +76,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -125,28 +125,26 @@ public class JobData {
         }
     }
 
-    public static ArrayList<HashMap<String, String>> findByValue(String term){
+    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm){
         // load data, if not already loaded
         loadData();
 
-        //create a new ArrayList of HashMaps that will contain the job search results
+        // create a new ArrayList that will contain the job objects
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        //
+        // for each job HashMap in the ArrayList of jobs
         for (HashMap<String, String> job : allJobs)
-            for (String value: job.values()){
+            //for each value in the job's values
+            for (String value : job.values()){
 
-            if (value.toLowerCase().contains(term.toLowerCase()))
-                // if the jobs ArrayList doesn't already contain the job, add it
-                if (!jobs.contains(job)) {
-                    jobs.add(job);
-                }
-
-        }
+                if (value.toLowerCase().contains(searchTerm.toLowerCase()))
+                    //if jobs doesn't already contain the job, add it (otherwise condition will not be met and nothing will happen)
+                    if (!jobs.contains(job)){
+                        jobs.add(job);
+                    }
+            }
 
         return jobs;
-
-
 
     }
 }
