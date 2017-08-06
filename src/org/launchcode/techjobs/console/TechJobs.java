@@ -61,7 +61,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -110,7 +110,32 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        // if there are jobs in the list
+        if (someJobs.size() > 0) {
 
-        System.out.println("printJobs is not implemented yet");
+            // iterate over each job in the list
+            for (HashMap<String, String> job : someJobs) {
+
+                System.out.println("*****");
+
+                // for each job, iterate over each key
+                // .keySet returns a collection of all keys in the  map
+                // .get returns the value to which the specified key is mapped
+                for (String key : job.keySet()) {
+                    System.out.println(key + ": " + job.get(key));
+                }
+
+                System.out.println("*****");
+            }
+        } else {
+            System.out.println("No jobs match your criteria.");
+        }
+
     }
+    // TODO: make searching case-insensitive, BUT return results with cases as they appear in CSV
+    // list of methods called when searching: main; getUserSelection; findByValue; findByColumnAndValue
+    // how is the user's search str compared against the values of fields of HM objects?
+        // ANS: the user's search term is saved as searchTerm in main under else clause
+    // need to make the comparison between user's search and HM objects without case mattering
+        // BUT don't change the data in allJobs
 }
