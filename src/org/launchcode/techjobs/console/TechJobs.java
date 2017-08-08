@@ -119,8 +119,8 @@ public class TechJobs {
                 System.out.println("*****");
 
                 // for each job, iterate over each key
-                // .keySet returns a collection of all keys in the  map
-                // .get returns the value to which the specified key is mapped
+                // .keySet returns a collection containing all the keys in the map
+                // .get(key) returns the value to which the specified key is mapped
                 for (String key : job.keySet()) {
                     System.out.println(key + ": " + job.get(key));
                 }

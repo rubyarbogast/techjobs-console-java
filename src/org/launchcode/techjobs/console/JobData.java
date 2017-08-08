@@ -53,7 +53,10 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        return allJobs;
+        // create a copy of allJobs so that the data can't be messed with
+        ArrayList<HashMap<String, String>> copyAllJobs = new ArrayList<HashMap<String, String>>(allJobs);
+
+        return copyAllJobs;
     }
 
     /**
@@ -136,7 +139,7 @@ public class JobData {
 
         // for each job HashMap in the ArrayList of jobs
         for (HashMap<String, String> job : allJobs)
-            //for each value in the job's values
+            //for each value in the job's key-value pairs
             for (String value : job.values()){
 
                 if (value.toLowerCase().contains(searchTerm.toLowerCase()))
